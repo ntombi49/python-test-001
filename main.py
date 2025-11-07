@@ -12,24 +12,17 @@ def draw_square(size:int, filled=False, char="*")-> str:
     """
     square = " "
     for i in range(size):
-        if filled:
+        if filled or i == 0 or i == size -1:
             results += char * size
-        elif i == 0:
-            results += char * size
-        elif i == size - 1:          #Accessing the last char
-            results += + char * size
         else:
             results += char + " " * (size - 2) + char  
         results += "\n"    #moving to the next line
         
         return results
-    
-    print(draw_square(5))
-    print(draw_square(5, filled=True, char="#"))
 
         
     
-    # pass
+    pass
 
     
 # def draw_number_triangle(height:int)->str:
