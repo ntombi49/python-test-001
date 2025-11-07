@@ -55,64 +55,100 @@ def draw_number_triangle(height:int)->str:
     
     pass
 
-# def factorial(n:int):
-#     """
-#     Calculate factorial of n (n!)
-#     A factorial is the product of all positive integers less than or equal to n.
-#     i.e factorial(5) or 5! = 5 * 4 * 3 * 2 * 1 = 120
+def factorial(n:int):
+    """
+    Calculate factorial of n (n!)
+    A factorial is the product of all positive integers less than or equal to n.
+    i.e factorial(5) or 5! = 5 * 4 * 3 * 2 * 1 = 120
 
-#     n: non-negative integer
-#     return: n!
-#     """
-#     pass
+    n: non-negative integer
+    return: n!
+    """
     
-# def bar_graph()->str:
-#     """
-#     This function draws a graph of averages per class:
-    
-#     read data from grades.txt, there is data for 8 class and marks for 15 students per class
-#     each row represents a class and each column represents a student marks
-    
-#     Task is to draw a bar graph of averages per class:
-#     each '*' represents 10 % 
-#     i.e
-    
-#     Class averages:
-#     1: *****
-#     2: ********
-#     3: **
-#     4: *****
-#     ... etc.
+    results = 1
+    for i in range(1, n + 1):
+        results *= i
+        
+    return results
 
-#     returns:
-#         str: string of the graph
-#     """
-#     pass
+    pass
+    
+def bar_graph()->str:
+    """
+    This function draws a graph of averages per class:
+    
+    read data from grades.txt, there is data for 8 class and marks for 15 students per class
+    each row represents a class and each column represents a student marks
+    
+    Task is to draw a bar graph of averages per class:
+    each '*' represents 10 % 
+    i.e
+    
+    Class averages:
+    1: *****
+    2: ********
+    3: **
+    4: *****
+    ... etc.
+
+    returns:
+        str: string of the graph
+    """
+    graph = ""
+    f = open("grades.txt", "r")
+    data = f.readlines()
+    f.close()
+    
+    for i in range(len(data)):
+        line = data[i].strip().split(",")
+        total = 0
+        
+        for mark in line:
+            total = total + int(mark)
+        average = total / len(line)
+        stars = "*" * int(average // 10)
+        graph += str(i + 1) + ":" + stars + "\n" 
+    return graph
+   
+    pass
 
 
-# def pascals_triangle(rows:int)->list[int]:
-#     """ p(n, k) = n! / (k! * (n-k)!)
+def pascals_triangle(rows:int)->list[int]:
+    """ p(n, k) = n! / (k! * (n-k)!)
     
     
-#     n: number of rows starting from 0
-#     k: column number starting from 0
-#     i.e 
-#     rows 
-#     0:              1
-#     1:            1   1
-#     2:          1   2   1
-#     3:        1   3   3   1
-#     4:      1   4   6   4   1
-#     5:    1  5  10  10   5   1
-#     6:  1  6  15  20  15   6   1
-#     7:1  7 21  35  35  21   7   1
+    n: number of rows starting from 0
+    k: column number starting from 0
+    i.e 
+    rows 
+    0:              1
+    1:            1   1
+    2:          1   2   1
+    3:        1   3   3   1
+    4:      1   4   6   4   1
+    5:    1  5  10  10   5   1
+    6:  1  6  15  20  15   6   1
+    7:1  7 21  35  35  21   7   1
     
-#     example:
-#         pascals_triangle(5)
-#         returns [1, 5, 10, 10, 5, 1]
-#         using 'p(n, k) = n! / (k! * (n-k)!)'
-#     """
-#     pass
+    example:
+        pascals_triangle(5)
+        returns [1, 5, 10, 10, 5, 1]
+        using 'p(n, k) = n! / (k! * (n-k)!)'
+    """
+    import math
+    triangle = []
+    
+    n = rows
+    for i in range(n + 1):
+        numerator = math.factorial(n)
+        denominator = math.factorial(i)
+        
+        #Uhhh eish now what?, I think i eed (n-k)! but forgot how to do it
+        value = numerator // denominator
+        triangle.append(value)
+        
+    return triangle
+    pass
 
 
     
