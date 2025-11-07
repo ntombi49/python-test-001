@@ -10,7 +10,7 @@ def draw_square(size:int, filled=False, char="*")-> str:
     Returns:
         str: A string representation of the square.
     """
-    square = " "
+    results = ""
     for i in range(size):
         if filled or i == 0 or i == size -1:
             results += char * size
@@ -25,23 +25,35 @@ def draw_square(size:int, filled=False, char="*")-> str:
     pass
 
     
-# def draw_number_triangle(height:int)->str:
-#     """
-#     This function draws a triangle of numbers with the given height.
-#     i.e height = 4
-#     returns: 
-#         1 
-#         2 3 
-#         4 5 6 
-#         7 8 9 10
+def draw_number_triangle(height:int)->str:
+    """
+    This function draws a triangle of numbers with the given height.
+    i.e height = 4
+    returns: 
+        1 
+        2 3 
+        4 5 6 
+        7 8 9 10
         
-#     Args:
-#         height (int): height of the triangle.
+    Args:
+        height (int): height of the triangle.
 
-#     Returns:
-#         string : A string representation of the number triangle.
-#     """
-#     pass
+    Returns:
+        string : A string representation of the number triangle.
+    """
+    
+    results = ""
+    count = 1
+    
+    for i in range(1, height + 1):
+        for r in range(i):
+            results += str(count) +" "   #adding a number and a space
+            count += 1
+        results += "\n"
+        
+    return results
+    
+    pass
 
 # def factorial(n:int):
 #     """
@@ -105,22 +117,22 @@ def draw_square(size:int, filled=False, char="*")-> str:
 
     
     
-# def main():
-#     chars = ['#', '*', '+', '@', '%']
-#     for i in range(3,8):
-#         print(draw_square(i,False,char=chars[i-3]))
+def main():
+    chars = ['#', '*', '+', '@', '%']
+    for i in range(3,8):
+        print(draw_square(i,False,char=chars[i-3]))
         
-#     print()
-#     print(draw_number_triangle(6))
-#     print(factorial(5))
-#     print()
-#     print(pascals_triangle(5))
-#     print(bar_graph())
-#     print()
+    print()
+    print(draw_number_triangle(6))
+    print(factorial(5))
+    print()
+    print(pascals_triangle(5))
+    print(bar_graph())
+    print()
  
     
-# if __name__ == "__main__":
-#     main()
+if __name__ == "__main__":
+    main()
 
     
     
