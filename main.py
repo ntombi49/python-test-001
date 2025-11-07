@@ -10,6 +10,10 @@ def draw_square(size:int, filled=False, char="*")-> str:
     Returns:
         str: A string representation of the square.
     """
+    if size == 1:
+        return char
+    if size <= 0:
+        return ""
     results = ""
     for i in range(size):
         if filled or i == 0 or i == size -1:
@@ -18,7 +22,7 @@ def draw_square(size:int, filled=False, char="*")-> str:
             results += char + " " * (size - 2) + char  
         results += "\n"    #moving to the next line
         
-        return results
+    return results
 
         
     
@@ -94,7 +98,8 @@ def bar_graph()->str:
     returns:
         str: string of the graph
     """
-    graph = ""
+    graph = "Class average:\n"
+    
     f = open("grades.txt", "r")
     data = f.readlines()
     f.close()
@@ -106,13 +111,14 @@ def bar_graph()->str:
         for mark in line:
             total = total + int(mark)
         average = total / len(line)
+        
         stars = "*" * int(average // 10)
         graph += str(i + 1) + ":" + stars + "\n" 
     return graph
    
     pass
 
-
+import math
 def pascals_triangle(rows:int)->list[int]:
     """ p(n, k) = n! / (k! * (n-k)!)
     
@@ -135,19 +141,15 @@ def pascals_triangle(rows:int)->list[int]:
         returns [1, 5, 10, 10, 5, 1]
         using 'p(n, k) = n! / (k! * (n-k)!)'
     """
-    import math
-    triangle = []
+    if rows < 0:
+        return []
     
-    n = rows
-    for i in range(n + 1):
-        numerator = math.factorial(n)
-        denominator = math.factorial(i)
-        
-        #Uhhh eish now what?, I think i eed (n-k)! but forgot how to do it
-        value = numerator // denominator
-        triangle.append(value)
-        
-    return triangle
+    result = []
+    for k in range(rows + 1):
+        value = math.comb(rows, k) 
+        result.append(value)
+    return result
+
     pass
 
 
